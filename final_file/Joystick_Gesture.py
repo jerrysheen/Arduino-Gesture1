@@ -13,6 +13,7 @@ try:
             x_current,y_current = m.position()
             read = ser.readline()
             if read.find('(') == -1 : 
+            if read.find('(') == 0 : 
                 comma = read.index(',')
                 end = read.index(')')
                 x_move = int(read[comma+1:end])-x_begin
@@ -33,6 +34,6 @@ try:
                     time.sleep(0.05)
                     count = count + 1
             elif read == 'CLICK\r\n' :
-                m.click(current_x,current_y,1)
+                m.click(x_current,y_current,1)
 except KeyboardInterrupt :
     print("stop")
